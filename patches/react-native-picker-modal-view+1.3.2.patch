@@ -1,0 +1,18 @@
+diff --git a/node_modules/react-native-picker-modal-view/dist/Assets/Images/close.png b/node_modules/react-native-picker-modal-view/dist/Assets/Images/close.png
+index 4ad8637..fe552a7 100644
+Binary files a/node_modules/react-native-picker-modal-view/dist/Assets/Images/close.png and b/node_modules/react-native-picker-modal-view/dist/Assets/Images/close.png differ
+diff --git a/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@2x.png b/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@2x.png
+index 9505286..fe552a7 100644
+Binary files a/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@2x.png and b/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@2x.png differ
+diff --git a/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@3x.png b/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@3x.png
+index 8e01267..fe552a7 100644
+Binary files a/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@3x.png and b/node_modules/react-native-picker-modal-view/dist/Assets/Images/close@3x.png differ
+diff --git a/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow.png b/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow.png
+index c916dd5..68ff14b 100644
+Binary files a/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow.png and b/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow.png differ
+diff --git a/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@2x.png b/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@2x.png
+index 8b7b0f8..68ff14b 100644
+Binary files a/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@2x.png and b/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@2x.png differ
+diff --git a/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@3x.png b/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@3x.png
+index c557044..68ff14b 100644
+Binary files a/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@3x.png and b/node_modules/react-native-picker-modal-view/dist/Assets/Images/left-arrow@3x.png differ

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">asiasoft.info</domain>
+        <domain includeSubdomains="true">ashop.vn</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">192.168.1.169</domain>
+        <domain includeSubdomains="true">192.168.0.88</domain>
+        <domain includeSubdomains="true">192.168.0.104</domain>
+        <domain includeSubdomains="true">192.168.0.106</domain>
+        <domain includeSubdomains="true">10.0.3.2</domain>
+    </domain-config>
+</network-security-config>

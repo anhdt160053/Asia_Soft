@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>659934258338-lcuu13lr8dfdoi12d6g58h4imacl74t8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.659934258338-lcuu13lr8dfdoi12d6g58h4imacl74t8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAawPOWSd6f5YVscUCUUGiBtNztSg_aujQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>659934258338</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>vn.starlingtech.lumos</string>
+	<key>PROJECT_ID</key>
+	<string>lumos-bb722</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lumos-bb722.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:659934258338:ios:8eb1c666a03527cf3963fb</string>
+</dict>
+</plist>

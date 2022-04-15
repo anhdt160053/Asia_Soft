@@ -1,0 +1,23 @@
+export default {
+  primary: '#46B4CF',
+  accent: '#3e2723',
+  background: '#ffffff',
+  surface: '#FFFFFF',
+  error: '#B00020',
+  text: '#000000',
+  onSurface: '#000000',
+  disabled: 'rgba(0,0,0,0.26)',
+  placeholder: 'rgba(0,0,0,0.54)',
+  backdrop: 'rgba(0,0,0,0.5)',
+  notification: '#ff6d00',
+  //custom
+  danger: '#DC3545',
+  success: '#008816',
+  warning: '#F27A54',
+  border: '#e4e4e4',
+  icon: '#A6A6A6',
+  inputBackground: '#F4F6FB',
+  inputBorder: '#DFE1E7',
+  rootBg: '#f0f0f0',
+  text2: '#ABABAB',
+}

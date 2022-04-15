@@ -1,0 +1,29 @@
+{
+    "tong": 1000,
+    "nhom1": {
+        "tong": 500,
+        "data": [
+            {
+                "ten": "ten",
+                "so_luong": 100
+            },
+            {
+                "ten": "ten",
+                "so_luong": 100
+            }
+        ]
+    },
+    "nhom2": {
+        "tong": 500,
+        "data": [
+            {
+                "ten": "ten",
+                "so_luong": 100
+            },
+            {
+                "ten": "ten",
+                "so_luong": 100
+            }
+        ]
+    }
+}
