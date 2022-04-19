@@ -115,7 +115,7 @@ workflows:
         publishing:
           app_store_connect:                 
               apple_id: hoangvanhieu565@icloud.com
-              password: hoangvanhieu565@icloud.com # <-- Put your App Specific Password. For more information visit: https://support.apple.com/en-us/HT204397
+              password: Encrypted('hoangvanhieu565@icloud.com') # <-- Put your App Specific Password. For more information visit: https://support.apple.com/en-us/HT204397
           # email:
           #   recipients:
           #       - dangtuananh@gmail.com
