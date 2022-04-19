@@ -4,6 +4,9 @@ workflows:
     react-native:
         name: React Native App
         environment:
+            vars:
+                XCODE_WORKSPACE: "TESTCODEMAGIC"
+                XCODE_SCHEME: "TESTCODEMAGIC"
             node: latest
         scripts:
             - npm install
