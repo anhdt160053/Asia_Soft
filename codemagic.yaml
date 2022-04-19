@@ -91,9 +91,9 @@ workflows:
             - name: Install CocoaPods dependencies
               script: |
                 cd ios && pod install
-            - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-              script: |
-                keychain initialize
+            # - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+            #   script: |
+            #     keychain initialize
             # - name: Fetch signing files
             #   script: |
             #     # For information about Codemagic CLI commands visit: https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md
