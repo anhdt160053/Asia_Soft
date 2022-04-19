@@ -52,21 +52,19 @@ workflows:
     #     artifacts:
     #         - android/app/build/outputs/**/*.apk
 
-     react-native-ios:
-        name: React Native iOS
-        max_build_duration: 120
-        instance_type: mac_mini
-        environment:
-          vars:
-            XCODE_WORKSPACE: "project.xcworkspace"
-            XCODE_SCHEME: "project"
-            BUNDLE_ID: "com.project.app"
-            APP_STORE_CONNECT_ISSUER_ID: Encrypted()
-            APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted()
-            APP_STORE_CONNECT_PRIVATE_KEY: Encrypted()
-            CERTIFICATE_PRIVATE_KEY: Encrypted()
-          xcode: latest
-          cocoapods: default
+  react-native-ios:
+    name: Production Build - AdHoc Distribution
+    environment:
+      vars:
+        XCODE_WORKSPACE: "project.xcworkspace"
+        XCODE_SCHEME: "project"
+        BUNDLE_ID: "com.project.app"
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted()
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted()
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted()
+        CERTIFICATE_PRIVATE_KEY: Encrypted()
+      xcode: latest
+      cocoapods: default
     scripts:
       - find . -name "Podfile" -execdir pod install \;
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
@@ -81,7 +79,7 @@ workflows:
           xcode-project use-profiles
       - name: Increment build number
         script: agvtool new-version -all $BUILD_NUMBER
-      - name: Build ipa for test
+      - name: Build ipa for Adhoc
         script: xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" --verbose
     artifacts:
       - build/ios/ipa/*.ipa
