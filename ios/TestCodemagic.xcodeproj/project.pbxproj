@@ -1,3 +1,7 @@
+DevelopmentTeam = YOUR_DEVELOPMENT_TEAM_ID 
+ProvisionaryStyle = Manual 
+PROVISIONING_PROFILE_SPECIFIER = NAME_OF_YOUR_PROVISIONING_PROFILE
+
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
