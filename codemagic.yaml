@@ -53,31 +53,30 @@ workflows:
     #         - android/app/build/outputs/**/*.apk
 
   react-native-ios:
-    name: React Native iOS
-    max_build_duration: 120
-    instance_type: mac_mini
-    environment:
-      vars:
-        XCODE_WORKSPACE: "project.xcworkspace"
-        XCODE_SCHEME: "project"
-        BUNDLE_ID: "com.project.app"
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted()
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted()
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted()
-        CERTIFICATE_PRIVATE_KEY: Encrypted()
-      node: latest
-      xcode: latest
-      cocoapods: default
-      triggering:
+        name: React Native iOS
+        max_build_duration: 120
+        instance_type: mac_mini
+        environment:
+            vars:
+                XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
+                XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here
+                APP_STORE_CONNECT_ISSUER_ID: 60a7de90-b9qd-47e7-e502-5b1c4c33a5d2 # <-- Put your App Store Connect Issuer Id here
+                APP_STORE_CONNECT_KEY_IDENTIFIER: GMJ945PW32
+                APP_STORE_CONNECT_PRIVATE_KEY: Encrypted()
+                CERTIFICATE_PRIVATE_KEY: Encrypted()
+            node: latest
+            xcode: latest
+            cocoapods: default
+        triggering:
             events:
                 - push
                 - tag 
                 - pull_request
             branch_patterns:
-                - pattern: develop # <<-- put the branch that the codemagic config file is
+                - pattern: test
                   include: true
                   source: true
-      scripts:
+        scripts:
             - name: Install yarn dependencies
               script: |
                 yarn
@@ -115,8 +114,8 @@ workflows:
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
         publishing:
           app_store_connect:                 
-              apple_id: appleid@example.com  
+              apple_id: hoangvanhieu565@icloud.com
               password: Encrypted() # <-- Put your App Specific Password. For more information visit: https://support.apple.com/en-us/HT204397
-          email:
-            recipients:
-                - dangtuananh2204@gmail.com  
+          # email:
+          #   recipients:
+          #       - dangtuananh@gmail.com
