@@ -53,7 +53,9 @@ workflows:
     #         - android/app/build/outputs/**/*.apk
 
   react-native-ios:
-    name: Production Build - AdHoc Distribution
+    name: React Native iOS
+    max_build_duration: 120
+    instance_type: mac_mini
     environment:
       vars:
         XCODE_WORKSPACE: "project.xcworkspace"
@@ -63,34 +65,58 @@ workflows:
         APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted()
         APP_STORE_CONNECT_PRIVATE_KEY: Encrypted()
         CERTIFICATE_PRIVATE_KEY: Encrypted()
+      node: latest
       xcode: latest
       cocoapods: default
-    scripts:
-      - find . -name "Podfile" -execdir pod install \;
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Fetch signing files
-        script: # You can allow creating resources if existing are not found with `--create` flag
-            PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-            mkdir -p "$PROFILES_HOME"
-            PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-            echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
-            echo "Saved provisioning profile $PROFILE_PATH"
-      - name: Use system default keychain
-        script: keychain add-certificates
-      - name: Set up signing certificate
-        script:
-            echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-             keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD  
-      - name: Increment build number
-        script: agvtool new-version -all $BUILD_NUMBER
-      - name: Build ipa for Adhoc
-        script: xcode-project build-ipa --workspace "ios/$XCODE_WORKSPACE.xcworkspace" --scheme "$XCODE_SCHEME"
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    publishing:
-      email:
-        recipients:
-          - dangtuananh2204@gmail.com
+      triggering:
+            events:
+                - push
+                - tag 
+                - pull_request
+            branch_patterns:
+                - pattern: develop # <<-- put the branch that the codemagic config file is
+                  include: true
+                  source: true
+      scripts:
+            - name: Install yarn dependencies
+              script: |
+                yarn
+            - name: Install CocoaPods dependencies
+              script: |
+                cd ios && pod install
+            - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+              script: |
+                keychain initialize
+            - name: Fetch or create certificate
+              script: |  
+                echo $CERTIFICATE_PRIVATE_KEY | base64 --decode > /tmp/certificate.p12
+                app-store-connect fetch-signing-files "com.id.bundle" --type IOS_APP_ADHOC --create
+            - name: Use system default keychain
+              script: |
+                keychain add-certificates 
+            - name: Increment build number
+              script: |
+                #!/bin/sh
+                set -e
+                set -x
+                cd $FCI_BUILD_DIR/ios
+                agvtool new-version -all $(($BUILD_NUMBER + 1))
+            - name: Set up code signing settings on Xcode project
+              script: |
+                cd ios && pod install
+                xcode-project use-profiles
+            - name: Build ipa for distribution
+              script: |
+                xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+        artifacts:
+            - build/ios/ipa/*.ipa
+            - /tmp/xcodebuild_logs/*.log
+            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+        publishing:
+          app_store_connect:                 
+              apple_id: appleid@example.com  
+              password: Encrypted() # <-- Put your App Specific Password. For more information visit: https://support.apple.com/en-us/HT204397
+          email:
+            recipients:
+                - dangtuananh2204@gmail.com  
