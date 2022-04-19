@@ -60,8 +60,8 @@ workflows:
             vars:
                 XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
                 XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here
-                APP_STORE_CONNECT_ISSUER_ID: 60a7de90-b9qd-47e7-e502-5b1c4c33a5d2 # <-- Put your App Store Connect Issuer Id here
-                APP_STORE_CONNECT_KEY_IDENTIFIER: GMJ945PW32
+                APP_STORE_CONNECT_ISSUER_ID: Encrypted('hoangvanhieu565@icloud.com') # <-- Put your App Store Connect Issuer Id here
+                APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted()
                 APP_STORE_CONNECT_PRIVATE_KEY: Encrypted()
                 CERTIFICATE_PRIVATE_KEY: Encrypted()
             node: latest
