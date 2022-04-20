@@ -56,24 +56,22 @@ workflows:
     name: React Native IOS
     max_build_duration: 120
     instance_type: mac_mini
-    environment:
-      vars:
-        # Env vars for automatic iOS code signing
-        # See the following link for more details - https://docs.codemagic.io/code-signing-yaml/signing-ios/
-        XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here
-        APPLE_ID: Encrypted(...) # <-- Put you encrypted Apple ID here
-        APP_SPECIFIC_PASSWORD: Encrypted(...) # <-- Put your encrypted App Specific Password here. For more information visit: https://support.apple.com/en-us/HT204397
-        # https://appstoreconnect.apple.com/access/api
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...) # <-- Put your App Store Connect Issuer Id here
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...) # <-- Put your App Store Connect Key Identifier here
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your App Store Connect Private Key here
-        CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your Certificate Private key here
-        BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g com.domain.myapp
-        APP_STORE_APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-      node: latest
-      xcode: latest
-      cocoapods: default
+    # environment:
+    #   vars:
+    #     XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
+    #     XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here
+    #     APPLE_ID: Encrypted(...) # <-- Put you encrypted Apple ID here
+    #     APP_SPECIFIC_PASSWORD: Encrypted(...) # <-- Put your encrypted App Specific Password here. For more information visit: https://support.apple.com/en-us/HT204397
+    #     # https://appstoreconnect.apple.com/access/api
+    #     APP_STORE_CONNECT_ISSUER_ID: Encrypted(...) # <-- Put your App Store Connect Issuer Id here
+    #     APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...) # <-- Put your App Store Connect Key Identifier here
+    #     APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your App Store Connect Private Key here
+    #     CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your Certificate Private key here
+    #     BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g com.domain.myapp
+    #     APP_STORE_APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+    #   node: latest
+    #   xcode: latest
+    #   cocoapods: default
     triggering:
       events:
         - push
@@ -124,18 +122,18 @@ workflows:
       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
       email:
         recipients:
-          - user_1@example.com
-          - user_2@example.com
+          - dangtuananh2204@gmail.com
+
         notify:
           success: true     # To not receive a notification when a build succeeds
           failure: false    # To not receive a notification when a build fails
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-        channel: '#channel-name'
-        notify_on_build_start: true   # To receive a notification when a build starts
-        notify:
-          success: true               # To receive a notification when a build succeeds
-          failure: false              # To not receive a notification when a build fails
-      app_store_connect:
-        apple_id: $APPLE_ID
-        password: $APP_SPECIFIC_PASSWORD
+      # slack:
+      #   # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+      #   channel: '#channel-name'
+      #   notify_on_build_start: true   # To receive a notification when a build starts
+      #   notify:
+      #     success: true               # To receive a notification when a build succeeds
+      #     failure: false              # To not receive a notification when a build fails
+      # app_store_connect:
+      #   apple_id: $APPLE_ID
+      #   password: $APP_SPECIFIC_PASSWORD
