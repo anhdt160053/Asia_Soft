@@ -68,8 +68,8 @@ workflows:
                 - certificate_credentials # <-- (Includes CERTIFICATE_PRIVATE_KEY - Put your Certificate Private Key here)
                 - other
            vars:
-               XCODE_WORKSPACE: "your_workspace_name.xcworkspace" # <-- Put the name of your Xcode workspace here
-               XCODE_SCHEME: "your_workspace_name" # <-- Put the name of your Xcode scheme here
+               XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
+               XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here
             node: latest
             xcode: latest
             cocoapods: default
@@ -122,6 +122,6 @@ workflows:
           app_store_connect:                 
               apple_id: Encrypted('hoangvanhieu565@icloud.com')
               password: Encrypted('hoangvanhieu565@icloud.com') # <-- Put your App Specific Password. For more information visit: https://support.apple.com/en-us/HT204397
-          # email:
-          #   recipients:
-          #       - dangtuananh@gmail.com
+          email:
+            recipients:
+                - dangtuananh@gmail.com
