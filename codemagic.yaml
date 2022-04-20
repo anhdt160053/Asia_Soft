@@ -56,22 +56,22 @@ workflows:
     name: React Native IOS
     max_build_duration: 120
     instance_type: mac_mini
-    # environment:
-    #   vars:
-    #     XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
-    #     XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here
-    #     APPLE_ID: Encrypted(...) # <-- Put you encrypted Apple ID here
-    #     APP_SPECIFIC_PASSWORD: Encrypted(...) # <-- Put your encrypted App Specific Password here. For more information visit: https://support.apple.com/en-us/HT204397
-    #     # https://appstoreconnect.apple.com/access/api
-    #     APP_STORE_CONNECT_ISSUER_ID: Encrypted(...) # <-- Put your App Store Connect Issuer Id here
-    #     APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...) # <-- Put your App Store Connect Key Identifier here
-    #     APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your App Store Connect Private Key here
-    #     CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your Certificate Private key here
-    #     BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g com.domain.myapp
-    #     APP_STORE_APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-    #   node: latest
-    #   xcode: latest
-    #   cocoapods: default
+    environment:
+      vars:
+        XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
+        XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here
+        APPLE_ID: Encrypted(YXBwc3RvcmVAYXNpYXNvZnQuY29tLnZu) # <-- Put you encrypted Apple ID here
+        APP_SPECIFIC_PASSWORD: Encrypted(TDc4ZVpSXnVBIWFhXkElUzk=) # <-- Put your encrypted App Specific Password here. For more information visit: https://support.apple.com/en-us/HT204397
+        # https://appstoreconnect.apple.com/access/api
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(OWZlNmMwOTItMThiOC00N2Y5LWJhMjgtODM1N2ExZWQxNGEx) # <-- Put your App Store Connect Issuer Id here
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(WEhUS0ZOR0I1SA==) # <-- Put your App Store Connect Key Identifier here
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JR1RBZ0VBTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEJIa3dkd0lCQVFRZ0ttNERXV0ovZ090eHJxZG0KVElBaDhDKzI2S2JFc2Z4cXVZSGJTZmhSclRlZ0NnWUlLb1pJemowREFRZWhSQU5DQUFRUlg5ZE9Tc3o0eUVsRQpNKzRKeTV2dDdVU2lFNFMrTm5NVW9WQkQ4OGVvOGxMQlpudlJYTDV3dW55R1lCdDVBUklYMWI3U1JLWEs2Z0NiClQxS2F6ZG5PCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0=) # <-- Put your App Store Connect Private Key here
+        CERTIFICATE_PRIVATE_KEY: Encrypted(MzAgODIgMDEgMGEgMDIgODIgMDEgMDEgMDAgYjEgODMgZDQgMGUgZmYgZGQgMWUgZmUgOWEgMjAgMzggODYgYjEgZTMgNjkgMmEgNjYgNDAgMDMgYzcgZGQgY2QgZDAgZTcgMzQgYmUgZDYgODAgOGQgZjggYTMgZjIgMTkgNzMgMTYgYWIgZjkgM2YgY2IgZTMgMDYgNDIgZTYgY2IgMDUgMjYgMTAgMzggYWQgYTEgZTcgM2EgNjAgZjkgMmEgYWYgYjMgYzcgMjkgYjQgMmUgOTIgYTEgZTEgMzEgOGUgMmQgNmUgMWIgZTYgMjMgYTEgMGMgMzggMjYgY2IgYzEgNWYgNGMgNDcgN2IgZDggNjUgMTUgMDUgOWMgZDggZjIgNzkgYjAgNDAgYjkgNDYgZGYgNGIgM2YgOGIgOWEgZWEgZjYgNDcgMGYgZjcgOWMgYjcgZjkgYmEgMjYgM2UgMTUgYjcgMTEgNGUgNzIgYzYgM2UgMGUgY2QgMDQgOWMgOGIgMjUgNTcgMGYgOGUgMDIgYjggYTMgMjQgYjggOTEgOWYgMjIgZDkgODMgNWUgOTYgYjggZDcgMDQgODkgODAgN2EgOTIgZmYgYTcgZjcgM2MgYmMgNTQgMDEgOTYgYmIgNWEgNjQgNzkgOTQgYmYgMjIgN2QgYmMgMzYgNjAgYjEgZjcgYjcgNTIgNDEgYzIgOTggMjEgYzQgMjMgYTIgMjQgNjkgNWQgMWMgYTIgMDcgYWUgYWIgZDkgOGMgOTAgNTIgNDMgOWQgNGIgY2IgYzUgYzAgOGYgMmUgMTEgZjMgMDAgY2MgYTUgYjEgNjUgNTAgM2UgM2IgZWQgZjAgMDggNzUgNGUgNmUgZjMgNzUgNDMgZGMgMjggYjYgMWYgN2UgYWEgOTIgMDggNjIgNmIgNzQgMzAgNjUgMTYgZmIgOTYgNDAgNjQgOWQgZDAgMGEgNWYgY2YgNDQgOGQgMzYgMTIgNTEgYzQgZDIgNTcgYWEgOGIgYjQgN2IgMDUgZmEgNjcgNGIgMmEgNTIgZmUgNzcgMDIgMDMgMDEgMDAgMDE=) # <-- Put your Certificate Private key here
+        BUNDLE_ID: "XC com c247tech a247driver2 - com.c247tech.a247driver2" # <-- Put your Bundle Id here e.g com.domain.myapp
+        APP_STORE_APP_ID: 1620143331 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+      node: latest
+      xcode: latest
+      cocoapods: default
     triggering:
       events:
         - push
@@ -91,11 +91,9 @@ workflows:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
                     keychain initialize
-      # - name:
-      #   script: |
-      #     # For information about Codemagic CLI commands visit: https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md
-      #     # For details about the --type paramater below - https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store
-      #     app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create          
+      - name: Fetch signing files
+          script: |
+            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
       - name: Use system default keychain
         script: |
                      keychain add-certificates --certificate /path/to/certificate.p12 --certificate-password CERTIFICATE_PASSWORD
@@ -136,6 +134,6 @@ workflows:
       #   notify:
       #     success: true               # To receive a notification when a build succeeds
       #     failure: false              # To not receive a notification when a build fails
-      # app_store_connect:
-      #   apple_id: $APPLE_ID
-      #   password: $APP_SPECIFIC_PASSWORD
+      app_store_connect:
+        apple_id: Encrypted(YXBwc3RvcmVAYXNpYXNvZnQuY29tLnZu) 
+        password: Encrypted(TDc4ZVpSXnVBIWFhXkElUzk=)
