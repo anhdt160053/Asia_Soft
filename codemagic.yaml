@@ -59,6 +59,7 @@ workflows:
     environment:
       groups:
         - appstore_credentials
+        - certificate_credentials
       vars:
         XCODE_WORKSPACE: "TestCodemagic.xcworkspace" 
         XCODE_SCHEME: "TestCodemagic"       
