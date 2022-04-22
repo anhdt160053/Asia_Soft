@@ -56,10 +56,10 @@ workflows:
     name: React Native IOS
     max_build_duration: 120
     instance_type: mac_mini
-    environment:
+     environment:
       groups:
-        -appstore_credentials 
-       vars:
+        - appstore_credentials
+      vars:
         XCODE_WORKSPACE: "TestCodemagic.xcworkspace" 
         XCODE_SCHEME: "TestCodemagic"       
         BUNDLE_ID: "com.AsiaSoftCo.TestCodemagic" 
