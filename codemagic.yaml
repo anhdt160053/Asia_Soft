@@ -58,7 +58,7 @@ workflows:
     instance_type: mac_mini
     environment:
       group: 
-        -vars
+        -appstore_credentials
         -ios_config
        vars:
         XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
