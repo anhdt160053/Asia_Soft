@@ -57,13 +57,11 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini
     environment:
-      group: 
-        -appstore_credentials
-        -ios_config
+      group: -appstore_credentials 
        vars:
-        XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here        
-        BUNDLE_ID: "com.AsiaSoftCo.TestCodemagic" # <-- Put your Bundle Id here e.g com.domain.myapp
+        XCODE_WORKSPACE: "TestCodemagic.xcworkspace" 
+        XCODE_SCHEME: "TestCodemagic"       
+        BUNDLE_ID: "com.AsiaSoftCo.TestCodemagic" 
         node: latest
         xcode: latest
         cocoapods: default
