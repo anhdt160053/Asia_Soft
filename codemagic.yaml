@@ -57,7 +57,8 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini
     environment:
-      group: -appstore_credentials 
+      groups:
+        -appstore_credentials 
        vars:
         XCODE_WORKSPACE: "TestCodemagic.xcworkspace" 
         XCODE_SCHEME: "TestCodemagic"       
