@@ -57,83 +57,75 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini
     environment:
-      vars:
+      group: 
+        -vars
+        - ios_config
+       vars:
         XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here
-        APPLE_ID: Encrypted(YXBwc3RvcmVAYXNpYXNvZnQuY29tLnZu) # <-- Put you encrypted Apple ID here
-        APP_SPECIFIC_PASSWORD: Encrypted(TDc4ZVpSXnVBIWFhXkElUzk=) # <-- Put your encrypted App Specific Password here. For more information visit: https://support.apple.com/en-us/HT204397
-        # https://appstoreconnect.apple.com/access/api
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted(OWZlNmMwOTItMThiOC00N2Y5LWJhMjgtODM1N2ExZWQxNGEx) # <-- Put your App Store Connect Issuer Id here
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(WEhUS0ZOR0I1SA==) # <-- Put your App Store Connect Key Identifier here
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JR1RBZ0VBTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEJIa3dkd0lCQVFRZ0ttNERXV0ovZ090eHJxZG0KVElBaDhDKzI2S2JFc2Z4cXVZSGJTZmhSclRlZ0NnWUlLb1pJemowREFRZWhSQU5DQUFRUlg5ZE9Tc3o0eUVsRQpNKzRKeTV2dDdVU2lFNFMrTm5NVW9WQkQ4OGVvOGxMQlpudlJYTDV3dW55R1lCdDVBUklYMWI3U1JLWEs2Z0NiClQxS2F6ZG5PCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0=) # <-- Put your App Store Connect Private Key here
-        CERTIFICATE_PRIVATE_KEY: Encrypted(MzAgODIgMDEgMGEgMDIgODIgMDEgMDEgMDAgYjEgODMgZDQgMGUgZmYgZGQgMWUgZmUgOWEgMjAgMzggODYgYjEgZTMgNjkgMmEgNjYgNDAgMDMgYzcgZGQgY2QgZDAgZTcgMzQgYmUgZDYgODAgOGQgZjggYTMgZjIgMTkgNzMgMTYgYWIgZjkgM2YgY2IgZTMgMDYgNDIgZTYgY2IgMDUgMjYgMTAgMzggYWQgYTEgZTcgM2EgNjAgZjkgMmEgYWYgYjMgYzcgMjkgYjQgMmUgOTIgYTEgZTEgMzEgOGUgMmQgNmUgMWIgZTYgMjMgYTEgMGMgMzggMjYgY2IgYzEgNWYgNGMgNDcgN2IgZDggNjUgMTUgMDUgOWMgZDggZjIgNzkgYjAgNDAgYjkgNDYgZGYgNGIgM2YgOGIgOWEgZWEgZjYgNDcgMGYgZjcgOWMgYjcgZjkgYmEgMjYgM2UgMTUgYjcgMTEgNGUgNzIgYzYgM2UgMGUgY2QgMDQgOWMgOGIgMjUgNTcgMGYgOGUgMDIgYjggYTMgMjQgYjggOTEgOWYgMjIgZDkgODMgNWUgOTYgYjggZDcgMDQgODkgODAgN2EgOTIgZmYgYTcgZjcgM2MgYmMgNTQgMDEgOTYgYmIgNWEgNjQgNzkgOTQgYmYgMjIgN2QgYmMgMzYgNjAgYjEgZjcgYjcgNTIgNDEgYzIgOTggMjEgYzQgMjMgYTIgMjQgNjkgNWQgMWMgYTIgMDcgYWUgYWIgZDkgOGMgOTAgNTIgNDMgOWQgNGIgY2IgYzUgYzAgOGYgMmUgMTEgZjMgMDAgY2MgYTUgYjEgNjUgNTAgM2UgM2IgZWQgZjAgMDggNzUgNGUgNmUgZjMgNzUgNDMgZGMgMjggYjYgMWYgN2UgYWEgOTIgMDggNjIgNmIgNzQgMzAgNjUgMTYgZmIgOTYgNDAgNjQgOWQgZDAgMGEgNWYgY2YgNDQgOGQgMzYgMTIgNTEgYzQgZDIgNTcgYWEgOGIgYjQgN2IgMDUgZmEgNjcgNGIgMmEgNTIgZmUgNzcgMDIgMDMgMDEgMDAgMDE=) # <-- Put your Certificate Private key here
-        BUNDLE_ID: "XC com c247tech a247driver2 - com.c247tech.a247driver2" # <-- Put your Bundle Id here e.g com.domain.myapp
-        APP_STORE_APP_ID: 1620143331 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-      node: latest
-      xcode: latest
-      cocoapods: default
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: develop
-          include: true
-          source: true
-    scripts:
-      - name: Install npm dependencies
-        script: |
-                    npm install
-      - name: Install CocoaPods dependencies
-        script: |
+        XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here        
+        BUNDLE_ID: "$BUNDLE_ID" # <-- Put your Bundle Id here e.g com.domain.myapp
+        node: latest
+        xcode: latest
+        cocoapods: default
+        triggering:
+          events:
+            - push
+            - tag
+            - pull_request
+          branch_patterns:
+            - pattern: develop
+              include: true
+              source: true
+
+      scripts:
+        - name: Install npm dependencies
+        script: 
+                    yarn install
+
+         - name: Install CocoaPods dependencies
+        script: 
                     brew install cocoapods
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: |
-                    keychain initialize
-      - name: Fetch signing files
-          script: |
-            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
-      - name: Use system default keychain
-        script: |
-                     keychain add-certificates --certificate /path/to/certificate.p12 --certificate-password CERTIFICATE_PASSWORD
-      - name: Increment build number
-        script: |
-          #!/bin/sh
-          set -e
-          set -x
-          cd $CM_BUILD_DIR/ios
-          # agvtool new-version -all $(($BUILD_NUMBER + 1))
-          agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))          
+
+        - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+          script: keychain initialize
+
+        - name: Fetch signing files
+          script: 
+            app-store-connect fetch-signing-files "io.codemagic.TestCodemagic" \
+              --type IOS_APP_DEVELOPMENT \
+              --create      
+
+        - name: Set up signing certificate
+          script: keychain add-certificates
+
+        - name: Set up code signing settings on Xcode project
+          script: xcode-project use-profiles
+
+        - name: Increment build number
+          script: 
+            #!/bin/sh
+            set -e
+            set -x
+            cd $CM_BUILD_DIR/ios
+            # agvtool new-version -all $(($BUILD_NUMBER + 1))
+            agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))   
+
       - name: Set up code signing settings on Xcode project
-        script: |
+        script: 
                 xcode-project use-profiles --warn-only
-      - name: Build ipa for distribution
-        script: |
-                xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/TestCodemagic.xcworkspace" --scheme "TestCodemagic" 
-                # xcode-project use-profiles --project /path/to/MyProject.xcodeproj --profile /path/to/profile.mobileprovision
-                # xcode-project build-ipa --project /path/to/MyProject.xcodeproj --scheme MyScheme
+        -name: Build ipa
+          script: - xcode-project build-ipa --workspace "ios/TestCodemagic.xcworkspace" --scheme "TestCodemagic"
+
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
-      email:
-        recipients:
-          - dangtuananh2204@gmail.com
+   publishing:
+  app_store_connect: # For iOS or macOS app
+    api_key: $APP_STORE_CONNECT_PRIVATE_KEY 
+    key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+    issuer_id: $APP_STORE_CONNECT_ISSUER_ID
 
-        notify:
-          success: true     # To not receive a notification when a build succeeds
-          failure: false    # To not receive a notification when a build fails
-      # slack:
-      #   # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-      #   channel: '#channel-name'
-      #   notify_on_build_start: true   # To receive a notification when a build starts
-      #   notify:
-      #     success: true               # To receive a notification when a build succeeds
-      #     failure: false              # To not receive a notification when a build fails
-      app_store_connect:
-        apple_id: Encrypted(YXBwc3RvcmVAYXNpYXNvZnQuY29tLnZu) 
-        password: Encrypted(TDc4ZVpSXnVBIWFhXkElUzk=)
+
+    # check certificates
