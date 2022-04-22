@@ -77,7 +77,7 @@ workflows:
               source: true
     scripts:
        - name: Install npm dependencies
-         script: yarn install
+         script: npm install
        - name: Install CocoaPods dependencies
          script: 
                     brew install cocoapods
