@@ -59,7 +59,7 @@ workflows:
     environment:
       group: 
         -vars
-        - ios_config
+        -ios_config
        vars:
         XCODE_WORKSPACE: "TestCodemagic.xcworkspace" # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: "TestCodemagic" # <-- Put the name of your Xcode scheme here        
