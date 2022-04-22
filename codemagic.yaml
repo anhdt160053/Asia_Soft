@@ -83,11 +83,17 @@ workflows:
                     brew install cocoapods
        - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
          script: keychain initialize
-      #  - name: Fetch signing files
-      #    script: 
-      #       app-store-connect fetch-signing-files "com.AsiaSoftCo.TestCodemagic" --type IOS_APP_STORE --create
-       - name: Set up signing certificate
-         script: keychain add-certificates
+       - name: set up provisioning profiles
+         script: |
+            PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+            mkdir -p "$PROFILES_HOME"
+            PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+            echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+            echo "Saved provisioning profile $PROFILE_PATH"
+       - name: Add signing certificate to keychain
+         script: |
+            echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+            keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
        - name: Set up code signing settings on Xcode project
          script: xcode-project use-profiles
        - name: Increment build number
@@ -113,3 +119,4 @@ workflows:
       api_key: $APP_STORE_CONNECT_PRIVATE_KEY 
       key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
       issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+      submit_to_testflight: true
