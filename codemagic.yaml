@@ -83,9 +83,9 @@ workflows:
                     brew install cocoapods
        - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
          script: keychain initialize
-       - name: Fetch signing files
-         script: 
-            app-store-connect fetch-signing-files "com.AsiaSoftCo.TestCodemagic" --type IOS_APP_STORE --create
+      #  - name: Fetch signing files
+      #    script: 
+      #       app-store-connect fetch-signing-files "com.AsiaSoftCo.TestCodemagic" --type IOS_APP_STORE --create
        - name: Set up signing certificate
          script: keychain add-certificates
        - name: Set up code signing settings on Xcode project
