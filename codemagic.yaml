@@ -75,31 +75,24 @@ workflows:
             - pattern: develop
               include: true
               source: true
-
       scripts:
         - name: Install npm dependencies
         script: 
                     yarn install
-
          - name: Install CocoaPods dependencies
         script: 
                     brew install cocoapods
-
         - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
           script: keychain initialize
-
         - name: Fetch signing files
           script: 
             app-store-connect fetch-signing-files "io.codemagic.TestCodemagic" \
               --type IOS_APP_DEVELOPMENT \
               --create      
-
         - name: Set up signing certificate
           script: keychain add-certificates
-
         - name: Set up code signing settings on Xcode project
           script: xcode-project use-profiles
-
         - name: Increment build number
           script: 
             #!/bin/sh
@@ -108,23 +101,18 @@ workflows:
             cd $CM_BUILD_DIR/ios
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
             agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))   
-
       - name: Set up code signing settings on Xcode project
         script: 
                 xcode-project use-profiles --warn-only
         -name: Build ipa
           script: - xcode-project build-ipa --workspace "ios/TestCodemagic.xcworkspace" --scheme "TestCodemagic"
-
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
    publishing:
-  app_store_connect: # For iOS or macOS app
-    api_key: $APP_STORE_CONNECT_PRIVATE_KEY 
-    key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-    issuer_id: $APP_STORE_CONNECT_ISSUER_ID
-
-
-    # check certificates
+    app_store_connect:
+      api_key: $APP_STORE_CONNECT_PRIVATE_KEY 
+      key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+      issuer_id: $APP_STORE_CONNECT_ISSUER_ID
