@@ -81,7 +81,7 @@ workflows:
          script: npm install
        - name: Install CocoaPods dependencies
          script: 
-                    brew install cocoapods
+                    brew reinstall cocoapods
        - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
          script: keychain initialize
        - name: set up provisioning profiles
